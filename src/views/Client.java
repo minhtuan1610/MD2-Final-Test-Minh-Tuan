@@ -14,6 +14,7 @@ public class Client {
     public static void main(String[] args) {
         ContactManager contactManager = new ContactManager();
         Contact contact;
+        Contact contactTarget;
         ContactFromBinaryFile contactFromBinaryFile = new ContactFromBinaryFile();
         DataInput dataInput = new DataInput();
         final int MENU_CHOICE = -1;
@@ -43,6 +44,10 @@ public class Client {
                 case 3:
                     break;
                 case 4:
+                    System.out.println("Enter number that you want to erase:");
+                    int numberTarget = dataInput.getNumberInputFromUser();
+                    contactTarget = contactManager.getContactByNumber(numberTarget);
+                    contactManager.deleteContact(contactTarget);
                     break;
                 case 5:
                     break;

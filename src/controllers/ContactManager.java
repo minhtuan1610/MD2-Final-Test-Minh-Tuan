@@ -54,8 +54,18 @@ public class ContactManager {
         contactsList.remove(deletionContact);
     }
 
-    public void getNumberOfContact(int number) {
-
+    public Contact getContactByNumber(int number) {
+        Contact contactNumber = null;
+        for (Contact contact : contactsList
+        ) {
+            if (contact.getPhoneNumber() == number) {
+                contactNumber = contact;
+            } else {
+                System.out.println("Cannot find number in the contact list");
+                return null;
+            }
+        }
+        return contactNumber;
     }
 
     public void updateContact() {
