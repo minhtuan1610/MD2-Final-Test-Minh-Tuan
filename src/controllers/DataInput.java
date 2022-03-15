@@ -69,4 +69,10 @@ public class DataInput {
         return emailInput;
     }
 
+    public int getYesNoFromUser() {
+        Scanner inputNumber = new Scanner(System.in);
+        int numberInput;
+        numberInput = inputNumber.nextInt();
+        return numberInput;
+    }
 }

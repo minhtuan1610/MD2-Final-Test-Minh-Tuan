@@ -1,15 +1,22 @@
 package controllers;
 
 import models.Contact;
+import storage.ContactFromBinaryFile;
 
 import java.time.LocalDate;
 import java.util.LinkedList;
 
 public class ContactManager {
-    public static LinkedList<Contact> contactsList = new LinkedList<>();
+    public static ContactFromBinaryFile contactFromBinaryFile = new ContactFromBinaryFile();
+    private static String path_contact = ContactFromBinaryFile.SAVE_PATH_CONTACT;
+    public static LinkedList<Contact> contactsList = contactFromBinaryFile.readFile(path_contact);
     DataInput dataInput = new DataInput();
 
     public ContactManager() {
+    }
+
+    public static String getPathContact() {
+        return path_contact;
     }
 
     public void displayContactList() {

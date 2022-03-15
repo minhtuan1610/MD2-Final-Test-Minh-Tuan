@@ -3,6 +3,7 @@ package views;
 import controllers.ContactManager;
 import controllers.DataInput;
 import models.Contact;
+import storage.ContactFromBinaryFile;
 
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -13,7 +14,8 @@ public class Client {
     public static void main(String[] args) {
         ContactManager contactManager = new ContactManager();
         Contact contact;
-//        DataInput dataInput = new DataInput();
+        ContactFromBinaryFile contactFromBinaryFile = new ContactFromBinaryFile();
+        DataInput dataInput = new DataInput();
         final int MENU_CHOICE = -1;
         int choice = MENU_CHOICE;
         while (choice != 0) {
@@ -45,8 +47,15 @@ public class Client {
                 case 5:
                     break;
                 case 6:
+                    System.out.println("Data will be erased. Yes or No?");
+                    System.out.println("Yes: 1; No: 0. Enter the corresponding number:");
+                    int numberInput = dataInput.getYesNoFromUser();
+                    if (numberInput == 1) {
+                        contactFromBinaryFile.readFile(ContactManager.getPathContact());
+                    }
                     break;
                 case 7:
+                    contactFromBinaryFile.writeFile(ContactManager.getPathContact(), contactsList);
                     break;
                 case 8:
                     System.exit(0);
